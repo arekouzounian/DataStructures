@@ -13,7 +13,18 @@ namespace WeightedDirectedGraph
             get
             {
                 return vertices.Count;
+            }
+        }
 
+        public Vertex<T> this[int index]
+        {
+            get
+            {
+                return vertices[index];
+            }
+            set
+            {
+                vertices[index] = value;
             }
         }
 
@@ -41,17 +52,31 @@ namespace WeightedDirectedGraph
             }
         }
 
-        public void AddVertex()
+        public void AddVertex(Vertex<T> vertex)
         {
-
+            if(!vertices.Contains(vertex) && vertex != null && vertex.Count == 0)
+            {
+                vertices.Add(vertex);
+            }
         }
 
-        public void RemoveVertex()
+        public bool RemoveVertex(Vertex<T> vertex)
         {
+            if(!vertices.Contains(vertex))
+            {
+                return false;
+            }
 
+            foreach(var neighbor in vertex.NeighboringVertices)
+            {
+                if(neighbor.EndPoint == vertex)
+                {
+
+                }
+            }
         }
 
-        public void AddEdge()
+        public void AddEdge(Vertex<T> vertex1, Vertex<T> vertex2, double distance)
         {
 
         }
